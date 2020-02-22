@@ -1,0 +1,384 @@
+/* #region -- CSS Variables */
+
+:root {
+  --red: #801336;
+  --light-gray: #eaeaea;
+  --dark-blue: #2980b9;
+  --blue: #3498db;
+  --button-border: none;
+  --fore: #4e4c5b;
+  --high: #ee4540;
+  --lite: #e9ecef;
+  --mids: #6c757d;
+  --dark: #510a32;
+  --back: #ffffff;
+  --none: none;
+}
+
+/* #endregion -- CSS Variables */
+
+/* #region -- Screen Level Classes (HTML + BODY + #PUI) */
+#pui {
+  height: 100%;
+  width: 100%;
+}
+
+#pui * {
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* * --------------------------------------------------------------------- * */
+/* * -- HAVE SCREEN ALWAYS USE ALL WINDOW SPACE INSTEAD OF SCREEN ONLY  -- * */
+/* * -- USING "REQUIRED" SPACE.                                         -- * */
+/* * --------------------------------------------------------------------- * */
+
+html {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* * --------------------------------------------------------------------- * */
+/* * -- HAVE CONTENT ALWAYS USE ALL AVAILABLE SPACE INSTEAD OF CONTENT  -- * */
+/* * -- ONLY USING "REQUIRED" SPACE.                                    -- * */
+/* * --------------------------------------------------------------------- * */
+
+body {
+  height: 100%;
+  width: 100%;
+  background: #eaeaeabd;
+}
+
+/* #endregion -- Screen Level Classes (HTML + BODY + #PUI) */
+/* #region -- Tag Only Classes */
+
+button {
+  cursor: pointer;
+}
+
+/* #endregion -- Tag Only Classes */
+/* #region -- Shared Container Classes */
+.screen-container > .puiresp > div,
+.content-container > .puiresp > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-nav-bar > .puiresp > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* #endregion -- Shared Container Classes */
+
+/* #region -- Screen Container */
+.screen-container {
+  max-width: 1031px;
+  margin: 0 auto;
+}
+
+.screen-container > .puiresp {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 150px auto;
+  grid-template-rows: 84px auto 100px;
+  grid-gap: 0;
+}
+
+.screen-container > .puiresp > div {
+  padding: 0 1rem;
+}
+
+.screen-container > .puiresp > div:nth-of-type(1) {
+  grid-column: 2 / span 1;
+  grid-row: 1;
+  display: grid;
+  grid-template-rows: 52px 0;
+  grid-auto-columns: 52px;
+  grid-template-columns: 52px 1fr 52px;
+  grid-gap: 0 1rem;
+  padding: 0 1rem;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+}
+
+.screen-container > .puiresp > div:nth-of-type(2) {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  border: 0;
+}
+
+.screen-container > .puiresp > div:nth-of-type(3) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.screen-container > .puiresp > div:nth-of-type(4) {
+  grid-column: 3;
+  grid-row: 2;
+  display: none;
+}
+
+.screen-container > .puiresp > div:nth-of-type(5) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* #endregion -- Screen Container */
+
+/* #region -- Content Container */
+.office-copy,
+.ui-btn-corner-all,
+.office-copy-panel.office-copy-defaults {
+  border-radius: 0;
+}
+
+.content-container > .puiresp > div:nth-of-type(3) {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+}
+
+.content-container > .puiresp > div:nth-of-type(2) {
+  overflow: auto hidden;
+  padding: 0 0 17px 0;
+}
+
+.content-container > .puiresp > div:nth-of-type(1) {
+  overflow: hidden;
+  background: #F7F7F7;
+}
+
+.content-container > .puiresp > div > .grid-layout > div,
+.content-container > .puiresp > div > .grid-layout > div > div,
+.content-container > .puiresp > div > .chart-panel > div,
+.content-container > .puiresp > div > .chart-panel > div > div,
+.content-container > .puiresp > div > .chart-panel > div > span {
+  min-width: 100%;
+  height: 100% !important;
+  min-height: 100%;
+  display: flex;
+  place-items: center;
+  place-content: center;
+}
+
+.content-container > .puiresp > div > .chart-panel > div > span {
+  border: none;
+}
+
+.content-container > .puiresp > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  place-items: center;
+  place-content: center;
+}
+
+.content-container > .puiresp {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.5fr 3fr;
+  grid-gap: 1rem;
+  padding: 1rem;
+  place-content: space-evenly center;
+  place-items: center center;
+}
+
+/* #endregion -- Content Container */
+
+/* #region -- General Classes */
+.absolutely-no {
+  position: unset !important;
+}
+
+.relatively-yes {
+  position: relative !important;
+}
+
+.display--none {
+  display: none;
+}
+
+.pui-material-icons {
+  font-family: 'Material Icons';
+  font-weight: unset;
+  font-style: unset;
+  font-size: unset;
+  line-height: unset;
+  letter-spacing: unset;
+  text-transform: unset;
+  display: block;
+  white-space: unset;
+  word-wrap: unset;
+  direction: unset;
+  cursor: unset;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: 'liga';
+}
+
+.cell .pui-material-icons {
+  color: var(--fore);
+}
+
+.header-cell .pui-material-icons {
+  color: var(--back);
+}
+
+/* #endregion -- General Classes */
+
+/* #region -- Content Classes */
+/* #region -- Chart Tab Icons */
+
+.icon-tab .pui-material-icons.office-copy-defaults {
+  transition: color 0.5s ease-out, height 0.5s linear;
+  flex-grow: 1;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  cursor: pointer;
+}
+
+.office-copy-defaults.office-copy-output-field.icon-tab {
+  transition: background 0.5s ease-out;
+  flex-grow: 1;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.icon-tab.icon-tab--selected {
+  flex-grow: 1;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  background: var(--fore);
+  color: var(--back);
+}
+
+.icon-tab.icon-tab--selected .pui-material-icons.office-copy-defaults {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  background: var(--none);
+  color: var(--back);
+}
+
+/* #endregion -- Chart Tab Icons */
+
+/* #region -- Side Navigation Bar */
+.side-nav-bar > .puiresp {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, 36px);
+  grid-gap: 1rem;
+  padding: 1rem 0 1rem 1rem;
+  place-content: space-evenly center;
+  place-items: center center;
+}
+
+button.nav-button {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 500px;
+  background: var(--fore);
+  color: var(--back);
+  border: var(--button-border);
+  display: flex;
+  place-content: center flex-end;
+  place-items: center flex-end;
+  padding: 0 0.75rem;
+}
+
+.pui-material-icons-text.nav-button {
+  text-align: right;
+  margin: 0 0.75rem 0 0;
+  flex-grow: 1;
+  font-size: 0.85rem;
+}
+
+.nav-button * {
+  width: fit-content;
+  height: fit-content;
+  background: transparent;
+  display: block;
+}
+
+/* #endregion -- Side Navigation Bar */
+
+.screen-logo {
+  height: 100%;
+  width: 100%;
+  background: var(--back);
+  border-radius: 500px;
+}
+
+.screen-title,
+.office-copy-defaults.office-copy-text-header {
+  font-size: 2rem;
+}
+
+button.pill-button {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 500px;
+  background: var(--none);
+  color: var(--back);
+  border: var(--button-border);
+  display: flex;
+  place-content: center center;
+  place-items: center center;
+}
+
+.pill-button * {
+  width: fit-content;
+  height: fit-content;
+  background: var(--high);
+  display: block;
+  border-radius: 500px;
+}
+
+button.pill-button > .pui-material-icons,
+button.nav-button > .pui-material-icons {
+  font-size: 24px;
+}
+
+.office-copy-grid .cell.even,
+.office-copy-grid .cell.odd {
+  place-content: space-around;
+  padding: 0 5px !important;
+}
+
+/* .office-copy-grid .cell.header-cell, */
+.office-copy-icon {
+  background: var(--none);
+}
+
+.office-copy-grid .cell.header-cell > div {
+  min-height: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  display: flex;
+  place-content: center center;
+  place-items: center center;
+}
+/* #endregion -- Content Classes */
+
+/* #region --  */

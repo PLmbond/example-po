@@ -1,0 +1,96 @@
+/* #region -- Max-Width 1050px */
+
+@media screen and (max-width: 1050px) {
+
+  .content-container>.puiresp>div:nth-last-of-type(2) {
+    place-content: flex-start;
+    place-items: flex-start;
+  }
+
+}
+
+/* #endregion -- Max-Width 1050px */
+
+/* #region -- Max-Width 700px */
+
+@media screen and (max-width: 700px) {
+
+  /* #region -- Screen Container */
+  
+  .screen-container>.puiresp {
+    grid-template-columns: 1fr;
+    grid-gap: 0px;
+    grid-template-rows: 58px 58px minmax(100px, 100vh) auto;
+  }
+
+  .screen-container>.puiresp>div:nth-of-type(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-rows: 42px;
+    grid-auto-columns: 42px;
+    grid-template-columns: 42px 1fr 42px;
+    grid-gap: 1rem;
+    padding: 0 1rem;
+    place-content: center flex-end;
+    place-items: center center;
+    overflow: auto hidden;
+  }
+
+  .screen-container>.puiresp>div:nth-of-type(2) {
+    grid-column: 1 / span 2;
+    grid-row: 4;
+  }
+
+  .screen-container>.puiresp>div:nth-of-type(3) {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    border-right: 0;
+  }
+
+  .screen-container>.puiresp>div:nth-of-type(5) {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+  }
+
+  /* #endregion -- Screen Container */
+
+  /* #region -- Content Classes */
+
+  button.nav-button,
+  button.pill-button {
+    place-content: center center;
+    place-items: center center;
+    border-radius: 500px;
+  }
+
+  .side-nav-bar>.puiresp {
+    display: grid;
+    grid-template-rows: 42px;
+    grid-auto-columns: 42px;
+    grid-template-columns: 42px 42px;
+    grid-gap: 1rem;
+    padding: 0 1rem;
+    place-content: center flex-end;
+    place-items: center center;
+    overflow: auto hidden;
+  }
+  
+  .side-nav-bar>.puiresp .pui-material-icons.nav-button {
+    font-size: 24px;
+  }
+
+  .side-nav-bar>.puiresp .pui-material-icons-text.nav-button {
+    display: none;
+  }
+
+  .side-nav-bar>.puiresp>div:nth-of-type(n) {
+    grid-column: auto;
+    grid-row: 1;
+  }
+
+  /* #endregion -- Content Classes */
+
+}
+
+/* #endregion -- Max-Width 700px */

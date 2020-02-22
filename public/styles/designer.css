@@ -1,0 +1,29 @@
+
+/* #region -- Designer Area Background */
+div.puiresp > div[containername]::after {
+    opacity: 0.05;
+    font-size: 2.5em;
+    content: attr(containername);
+    display: none;
+}
+
+.x-panel-bwrap {
+  background: url(/ide/megan_bond/po.io/public/images/sunsetGradient-25o-sliver.png) 0 0 repeat-x;
+  background-size: auto 100%;
+}
+
+.pui-design-grid-10,
+.pui-design-grid-20,
+.pui-design-grid-30,
+.pui-design-grid-40,
+.pui-design-grid-50 {
+  overflow: overlay !important;
+  background: url(/ide/megan_bond/po.io/public/images/mathGrid-50x50-75o-180deg.png) 0 0 repeat;
+  background-blend-mode: color-burn;
+}
+
+[id*='dspfDesigner'] {
+  height: 100%
+}
+
+/* #endregion -- Designer Area Background */

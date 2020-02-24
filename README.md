@@ -20,8 +20,8 @@ Fork to new workspace to use.
 |--------------|--------------:|
 |   File       |        app.js |
 |   Function   |   app() {...} |
-|   Display    |    index.json |
-|   Screen     |          frec |
+|   Display    |      app.json |
+|   Screen     |      app.frec |
 
 ### Author: @megan_bond
 

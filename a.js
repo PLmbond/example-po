@@ -1,6 +1,7 @@
-var a = {
+/* jshint esversion: 6 */
 
-  iAm: function (i) {
+var a = {
+  iAm: function(i) {
     i = i || this.value || this;
     if (this.iNull(i)) return 'null';
     else if (this.iArray(i)) return 'array';
@@ -10,49 +11,66 @@ var a = {
     else return 'number';
   },
 
-  iNull: function (i) {
+  iNull: function(i) {
     return i === null;
   },
 
-  iObject: function (i) {
+  iObject: function(i) {
     return typeof i === 'object' && this.iNull(i);
   },
 
-  iArray: function (i) {
+  iArray: function(i) {
     return Array.isArray(i);
   },
 
-  iNaN: function (i) {
+  iNaN: function(i) {
     return Number.isNaN(i);
   },
 
-  iColNam: function (tbl) {
+  iColNam: function(tbl) {
     tbl = tbl || 'po_table';
-    return pjs.query("SELECT COLUMN_NAME AS `nam` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'" + tbl + "'");
+    return pjs.query(
+      "SELECT COLUMN_NAME AS `nam` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'" +
+        tbl +
+        "'"
+    );
   },
 
-  iGetTbl: function (tbl) {
+  iGetTbl: function(tbl) {
     tbl = tbl || 'po_table';
     return pjs.query('Select * From ' + tbl);
   },
 
-  iQuery: function (opt) {
+  iQuery: function(opt) {
     var s = opt.select || '*';
     var t = opt.table || 'po_table ';
     where = opt.where || '';
-    var w = (where !== '') ? ' WHERE ' + where : where;
-    var d = opt.direction || 'ASC'
+    var w = where !== '' ? ' WHERE ' + where : where;
+    var d = opt.direction || 'ASC';
     orderBy = opt.orderBy || '';
-    var o = ' ORDER BY ' + ((orderBy !== '') ? '`' + orderBy + '` ' + d + ',' : orderBy) + ((t != 'po_suppliers') ? ' `id` ' + d : ' `rrn` ' + d);
+    var o =
+      ' ORDER BY ' +
+      (orderBy !== '' ? '`' + orderBy + '` ' + d + ',' : orderBy) +
+      (t != 'po_suppliers' ? ' `id` ' + d : ' `rrn` ' + d);
     var l = opt.limit || '';
     return pjs.query('SELECT ' + s + ' FROM ' + t + w + o + l);
   },
-  
-  iSearch: function () {
 
+  iSearch: function(poShowByCriteria, poSearchBy, poOrderBy) {
+    if (poShowByCriteria) {
+      var xxx = po.gridRecs.filter(i =>
+        i[poSearchBy].toString().includes(poSearchFor)
+      );
+      // po.log(fs, 'New Run');
+
+      if (poOrderBy.length > 0)
+        xxx.sort((a, b) => (a[poOrderBy] > b[poOrderBy] ? 1 : -1));
+
+      dspf.sfrec.replaceRecords(xxx);
+    } else dspf.sfrec.replaceRecords(po.gridRecs);
   },
 
-  iInsert: function (rec, tbl) {
+  iInsert: function(rec, tbl) {
     tbl = tbl || 'po_table';
     var cols = this.iColNam(tbl);
     // console.log(cols);
@@ -60,62 +78,62 @@ var a = {
 
     cols.forEach(col => {
       if (rec[col.nam]) temp[col.nam] = rec[col.nam];
-    })
+    });
     // console.log('INSERT INTO ' + tbl + ' SET ?', [temp]);
     pjs.query('INSERT INTO ' + tbl + ' SET ?', [temp]);
     return this.iGetTbl(tbl);
   },
 
-  iUpdate: function (rec, tbl) {
+  iUpdate: function(rec, tbl) {
     tbl = tbl || 'po_table';
     pjs.query('UPDATE po_details SET ? WHERE id = ?', [rec, id]);
     return this.iGetTbl(tbl);
   },
 
-  iDelete: function (rec, tbl) {
+  iDelete: function(rec, tbl) {
     tbl = tbl || 'po_table';
     // console.log('DELETE FROM ' + tbl + ' WHERE id = ' + rec.id);
     pjs.query('DELETE FROM ' + tbl + ' WHERE id = ' + rec.id);
     return this.iGetTbl(tbl);
   },
 
-  iDownload: function (rec) {
+  iDownload: function(rec) {
     // console.log(rec);
     rec = rec || -1;
     // console.log(rec);
     var allRecsOfPO = [];
     this.tableNames.forEach(tbl => {
-      let r = this.iQuery({ table: tbl, where: 'id = ' + rec.id, });
-      r.forEach(r => { r.table = tbl })
+      let r = this.iQuery({table: tbl, where: 'id = ' + rec.id});
+      r.forEach(r => {
+        r.table = tbl;
+      });
       allRecsOfPO.push(...r);
     });
 
     return JSON.stringify(allRecsOfPO);
   },
 
-  iCategory: function (opt) {
+  iCategory: function(opt) {
     opt = opt || {};
-    var chart = {}
+    var chart = {};
     var hdrs = Object.getOwnPropertyNames(opt);
 
     hdrs.forEach(h => {
       let isArray = Array.isArray(chart[h]);
       chart[h] = opt[h];
-    })
-
+    });
   },
 
-  iDataSet: function (opt) {
+  iDataSet: function(opt) {
     opt = opt || {};
-
   },
 
-  iData: function (opt) {
+  iData: function(opt) {
     opt = opt || {};
     var tmp = {};
     tmp.table = opt.tbl || 'po_table';
     tmp.orderBy = opt.oby || 'order_total';
-    tmp.direction = opt.odr || 'DESC'
+    tmp.direction = opt.odr || 'DESC';
     var recs = opt.recs || this.iQuery(tmp);
     // console.log(recs);
     var sups = this.iGetTbl('po_suppliers');
@@ -123,39 +141,41 @@ var a = {
     var data = [];
 
     if (opt.dataSet) {
-      if (opt.series) { }
-
+      if (opt.series) {
+      }
     }
 
-
-    if (opt.categories) { }
+    if (opt.categories) {
+    }
 
     recs.forEach(rec => {
       let val = rec[opt.value] || rec.order_total;
-      let lbl = rec[opt.label] || (sups[rec.supplier_id] && sups[rec.supplier_id].po_supplier) ? sups[rec.supplier_id].po_supplier : 'No Label';
+      let lbl =
+        rec[opt.label] ||
+        (sups[rec.supplier_id] && sups[rec.supplier_id].po_supplier)
+          ? sups[rec.supplier_id].po_supplier
+          : 'No Label';
       let temp = {};
 
       temp.value = val;
       temp.label = lbl;
 
       data.push(temp);
-    })
+    });
 
     return data.slice(0, 10);
   },
 
-  iChart: function (opt) {
+  iChart: function(opt) {
     var chartJson = {};
 
     chartJson.chart = {};
     chartJson.data = opt.dataset || opt.data;
 
     if (opt.chart) {
-
       opt.chart.forEach(option => {
         chartJson.chart[option.property] = option.value;
       });
-
     } else {
       chartJson.chart.caption = 'No caption provided.';
       chartJson.chart.subCaption = 'No subCaption provided.';
@@ -167,34 +187,34 @@ var a = {
   },
 
   testData: {
-    "chart": {
-      "caption": "Split of Visitors by Age Group",
-      "subCaption": "Last year",
-      "use3DLighting": "0",
-      "showPercentValues": "1",
-      "decimals": "1",
-      "useDataPlotColorForLabels": "1",
-      "theme": "fusion"
+    chart: {
+      caption: 'Split of Visitors by Age Group',
+      subCaption: 'Last year',
+      use3DLighting: '0',
+      showPercentValues: '1',
+      decimals: '1',
+      useDataPlotColorForLabels: '1',
+      theme: 'fusion',
     },
-    "data": [
+    data: [
       {
-        "label": "Teenage",
-        "value": "1250400"
+        label: 'Teenage',
+        value: '1250400',
       },
       {
-        "label": "Adult",
-        "value": "1463300"
+        label: 'Adult',
+        value: '1463300',
       },
       {
-        "label": "Mid-age",
-        "value": "1050700"
+        label: 'Mid-age',
+        value: '1050700',
       },
       {
-        "label": "Senior",
-        "value": "491000"
-      }
-    ]
-  }
+        label: 'Senior',
+        value: '491000',
+      },
+    ],
+  },
 };
 
 module.exports = a;

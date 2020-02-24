@@ -79,7 +79,7 @@ button {
 
 /* #region -- Screen Container */
 .screen-container {
-  max-width: 1031px;
+  max-width: 941px;
   margin: 0 auto;
 }
 
@@ -187,7 +187,7 @@ button {
   grid-template-columns: 1fr;
   grid-template-rows: 1.5fr 3fr;
   grid-gap: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   place-content: space-evenly center;
   place-items: center center;
 }

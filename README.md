@@ -16,8 +16,8 @@ Fork to new workspace to use.
 
 ----
 
-| App File...  |        ...Name|
-|--------------|--------------:|
+| App...       |        ...Name|
+|:-------------|--------------:|
 |   File       |        app.js |
 |   Function   |   app() {...} |
 |   Display    |      app.json |

@@ -16,12 +16,12 @@ Fork to new workspace to use.
 
 ----
 
-| App...       | $nbsp;$nbsp;$nbsp;$nbsp;$nbsp;       ...Name|
+| App...       | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       ...Name|
 |:-------------|--------------------------------------------:|
-|   File       | $nbsp;$nbsp;$nbsp;$nbsp;$nbsp;       app.js |
-|   Function   | $nbsp;$nbsp;$nbsp;$nbsp;$nbsp;  app() {...} |
-|   Display    | $nbsp;$nbsp;$nbsp;$nbsp;$nbsp;     app.json |
-|   Screen     | $nbsp;$nbsp;$nbsp;$nbsp;$nbsp;     app.frec |
+|   File       | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       app.js |
+|   Function   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  app() {...} |
+|   Display    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     app.json |
+|   Screen     | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     app.frec |
 
 ### Author: @megan_bond
 

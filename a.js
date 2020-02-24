@@ -29,11 +29,17 @@ var a = {
 
   iColNam: function(tbl) {
     tbl = tbl || 'po_table';
-    return pjs.query(
+    var q = pjs.query(
       "SELECT COLUMN_NAME AS `nam` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'" +
         tbl +
         "'"
     );
+    var l = [];
+    
+    q.forEach(col => {
+      l.push(col.nam);
+    });
+    return l;
   },
 
   iGetTbl: function(tbl) {
@@ -56,9 +62,10 @@ var a = {
     return pjs.query('SELECT ' + s + ' FROM ' + t + w + o + l);
   },
 
-  iSearch: function(poShowByCriteria, poSearchBy, poOrderBy) {
+  iSearch: function(poShowByCriteria, poSearchBy, poOrderBy, poSearchFor) {
+    console.log(...arguments);
     if (poShowByCriteria) {
-      var xxx = po.gridRecs.filter(i =>
+      var xxx = a.records.filter(i =>
         i[poSearchBy].toString().includes(poSearchFor)
       );
       // po.log(fs, 'New Run');
@@ -66,8 +73,9 @@ var a = {
       if (poOrderBy.length > 0)
         xxx.sort((a, b) => (a[poOrderBy] > b[poOrderBy] ? 1 : -1));
 
-      dspf.sfrec.replaceRecords(xxx);
-    } else dspf.sfrec.replaceRecords(po.gridRecs);
+      // console.log (xxx);
+      return xxx;
+    } else return a.records;
   },
 
   iInsert: function(rec, tbl) {

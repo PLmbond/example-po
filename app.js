@@ -68,12 +68,10 @@ function app() {
     // console.log(poRecords,new Date);
     // console.log(iChartJson,new Date);
 
-    // Display screen.
-    app.frec.execute();
-
     if (iSearch) {
+      poByOptions = a.iColNam().toString();
       app.wrec.execute();
-      a.iSearch(poShowByCriteria, poSearchBy, poOrderBy);
+      app.sfrec.replaceRecords(a.iSearch(poShowByCriteria, poSearchBy, poOrderBy, poSearchFor));
     }
     // If the user submitted a new record to insert into table.
     var changed = app.sfrec.readChanged();
@@ -88,6 +86,9 @@ function app() {
     if (changed && changed.iDownload == true)
       poAllOfRecord = a.iDownload(changed);
     else poAllOfRecord = '';
+
+    // Display screen.
+    app.frec.execute();
 
     console.log('Looped: ', new Date());
   }

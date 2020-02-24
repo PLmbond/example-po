@@ -3,7 +3,7 @@ var x = pjs.require('x.js');
 var iAm = a.iAm;
 
 function app() {
-  
+
   pjs.defineDisplay('app', 'app.json');
   a.tableNames = ['po_details', 'po_status', 'po_table'];
   console.log('Started: ', new Date);
@@ -52,18 +52,23 @@ function app() {
     // Display screen.
     app.frec.execute();
 
+    if (iSearch) {
+      app.wrec.execute();
+      if (poShowAll);
+      if (poShowByCriteria);
+    }
     // If the user submitted a new record to insert into table.
     var changed = app.sfrec.readChanged();
     // console.log(changed);
-    
+
     // if (changed && changed.iAdd == true) a.iInsert(changed);
-    
+
     if (changed && changed.iDelete == true) a.iDelete(changed);
-    
+
     if (changed && changed.iEdit == true) edit(changed);
-    
+
     if (changed && changed.iDownload == true) poAllOfRecord = a.iDownload(changed);
-      else poAllOfRecord = '';
+    else poAllOfRecord = '';
 
     console.log('Looped: ', new Date);
 

@@ -47,6 +47,10 @@ var a = {
     var l = opt.limit || '';
     return pjs.query('SELECT ' + s + ' FROM ' + t + w + o + l);
   },
+  
+  iSearch: function () {
+
+  },
 
   iInsert: function (rec, tbl) {
     tbl = tbl || 'po_table';

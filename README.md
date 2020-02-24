@@ -1,25 +1,28 @@
 
-# Quick Display
+# Example PO Application
 
 ## Description
-Empty workspace with the basics set up for a quick display.
+
+A simple example implementation of a Purchase Order Lookup Application.
 
 ## How to Use
+
 Fork to new workspace to use.
 
 ## Why to Use
+
 * Developer needs only or mainly client side code.
 * Developer wants to start with the interface design and add backend as needed.
 
 ----
 
-| App...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   ...Name|
+| App File...  |        ...Name|
 |--------------|--------------:|
-|   File       |      index.js |
-|   Function   | index() {...} |
+|   File       |        app.js |
+|   Function   |   app() {...} |
 |   Display    |    index.json |
-|   Screen     |         index |
+|   Screen     |          frec |
 
-**Author: <i>megan.bond**
+### Author: @megan_bond
 
-**Date: <i>June 11th, 2019**
+### Date: February 24th, 2020

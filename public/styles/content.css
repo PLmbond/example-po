@@ -133,6 +133,64 @@ button {
 
 /* #endregion -- Screen Container */
 
+
+/* #region -- Edit Container */
+.edit-container {
+  max-width: 941px;
+  margin: 0 auto;
+}
+
+.edit-container > .puiresp {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 1fr;
+  grid-template-rows: 84px auto 100px;
+  grid-gap: 0;
+}
+
+.edit-container > .puiresp > div {
+  padding: 0 1rem;
+}
+
+.edit-container > .puiresp > div:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  grid-template-rows: 52px 0;
+  grid-auto-columns: 52px;
+  grid-template-columns: 52px 1fr 52px;
+  grid-gap: 0 1rem;
+  padding: 0 1rem;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+}
+
+.edit-container > .puiresp > div:nth-of-type(2) {
+  grid-column: 1;
+  grid-row: 3;
+  border: 0;
+}
+
+.edit-container > .puiresp > div:nth-of-type(3) {
+  grid-column: 1;
+  grid-row: 2;
+  display: none;
+}
+
+.edit-container > .puiresp > div:nth-of-type(4) {
+  grid-column: 3;
+  grid-row: 2;
+  display: none;
+}
+
+.edit-container > .puiresp > div:nth-of-type(5) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* #endregion -- Edit Container */
+
 /* #region -- Content Container */
 .office-copy,
 .ui-btn-corner-all,
@@ -153,7 +211,7 @@ button {
 
 .content-container > .puiresp > div:nth-of-type(1) {
   overflow: hidden;
-  background: #F7F7F7;
+  background: var(--back);
 }
 
 .content-container > .puiresp > div > .grid-layout > div,
@@ -354,9 +412,18 @@ button.pill-button {
   border-radius: 500px;
 }
 
-button.pill-button > .pui-material-icons,
+button.pill-button > .pui-material-icons {
+  font-size: 18px;
+  padding: 0.25rem;
+  display: flex;
+  place-content: center center;
+  place-items: center center;
+}
 button.nav-button > .pui-material-icons {
   font-size: 24px;
+  display: flex;
+  place-content: center center;
+  place-items: center center;
 }
 
 .office-copy-grid .cell.even,

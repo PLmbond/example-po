@@ -59,6 +59,26 @@ function app() {
           property: 'theme',
           value: 'zune',
         },
+        {
+          property: 'bgColor',
+          value: '#FFFFFF',
+        },
+        {
+          property: 'bgAlpha',
+          value: '1',
+        },
+        {
+          property: 'canvasBgColor',
+          value: '#FFFFFF',
+        },
+        {
+          property: 'canvasBgAlpha',
+          value: '1',
+        },
+        {
+          property: 'bgImageAlpha',
+          value: '0',
+        }
       ],
       data: a.iData(a),
     };
